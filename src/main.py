@@ -14,12 +14,14 @@ from os.path import isfile,join
 if __name__ == '__main__':
     print("start")
     binaryPath = "/Applications/Firefox.app/Contents/MacOS/firefox-bin"
-    profilePath = "/Users/iloreto/Library/Application Support/Firefox/Profiles/20wd5tda.default"
-    sourcepath = "/Users/iloreto/Downloads/hubot-ingress-master/badges/"
+    profilePath = "/Users/[username]/Library/Application Support/Firefox/Profiles/20wd5tda.default"
+    sourcepath = "/Users/[username]/Downloads/hubot-ingress-master/badges/"
+    team_url = "https://[teamname].slack.com/customize/emoji"
+    
     inputNameID = "emojiname"  
     inputImgID = "emojiimg"
     saveButtonPath = "/html/body/div/div[1]/section/div/form/div[2]/p[4]/input"
-    team_url = "https://itfops.slack.com/customize/emoji"
+    
     profile = FirefoxProfile(profilePath)
     binary =  FirefoxBinary(binaryPath)
     browser = webdriver.Firefox(firefox_binary=binary,firefox_profile=profile)  
@@ -40,4 +42,5 @@ if __name__ == '__main__':
             saveButton.click()
     except (NoSuchElementException, TimeoutException):
         print("not logged in")
+    browser.quit()
     print("stop")
